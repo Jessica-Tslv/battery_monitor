@@ -22,7 +22,7 @@ while true; do
     
     # Check if battery is below 25% AND NOT plugged in AC
     elif [[ $current_capacity -lt 25 ]] && pmset -g batt | grep -q "Battery Power"; then
-        echo - e "${RED}Battery is below 25%. Consider plugging to charge the battery.${NC}"
+        echo -e "${RED}Battery is below 25%. Consider plugging to charge the battery.${NC}"
         afplay /System/Library/Sounds/Glass.aiff
         afplay /System/Library/Sounds/Glass.aiff
         osascript -e 'display dialog "Battery is below 25%. Consider plugging to charge the battery." buttons {"OK"} default button "OK"'
