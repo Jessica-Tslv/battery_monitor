@@ -8,14 +8,14 @@ while true; do
     current_capacity=$(ioreg -r -c AppleSmartBattery | awk -F'= ' '/"CurrentCapacity"/ {print $2}' | xargs)
 
     # Check if battery is above 80%
-    if [[ $current_capacity -gt 80 ]]; then
+    if [[ $current_capacity -gt 80 ]] && pmset -g batt | grep -q "AC Power"; then
         echo "Battery is above 80% and charging. Consider unplugging."
         afplay /System/Library/Sounds/Glass.aiff
         afplay /System/Library/Sounds/Glass.aiff
         osascript -e 'display dialog "Battery is above 80% and charging. Consider unplugging." buttons {"OK"} default button "OK"'
     
     # Check if battery is below 25%
-    elif [[ $current_capacity -lt 25 ]]; then
+    elif [[ $current_capacity -lt 25 ]] && pmset -g batt | grep -q "Battery Power"; then
         echo "Battery is below 25%. Consider plugging to charge the battery."
         afplay /System/Library/Sounds/Glass.aiff
         afplay /System/Library/Sounds/Glass.aiff
