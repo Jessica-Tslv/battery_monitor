@@ -39,6 +39,7 @@ while true; do
 
         else
         echo -e "${GREEN}Battery's current capacity is ${current_capacity}. It is within the acceptable capacity range.${NC}"
+        fi
     fi
 
     echo -e "${YELLOW}Next check is in 60 seconds...${NC}"
