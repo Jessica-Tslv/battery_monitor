@@ -31,7 +31,7 @@ while true; do
     
     else
         # Battery below 80% and IS charging
-        if [[ $current_capacity -lt 80 ]] && pmset -g batt | grep -q "AC Power"; then
+        if [[ $current_capacity -le 80 ]] && pmset -g batt | grep -q "AC Power"; then
             echo -e "${BLUE}Battery's current capacity is ${current_capacity} and currently charging.${NC}"
 
         # Battery above 80% but IS NOT charging
